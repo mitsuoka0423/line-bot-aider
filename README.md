@@ -35,7 +35,7 @@
 5. サーバーを起動します。
 
    ```bash
-   node line-bot.js
+   node dist/index.js
    ```
 
    サーバーはポート3000で起動します。
