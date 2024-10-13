@@ -7,7 +7,7 @@ function handleEvent(event: WebhookEvent): Promise<MessageAPIResponseBase | null
     return Promise.resolve(null);
   }
 
-  const echo = processMessage(event.message.text);
+  const echo: line.TextMessage = processMessage(event.message.text);
 
   return client.replyMessage(event.replyToken, echo);
 }

@@ -8,7 +8,7 @@ interface Config {
 
 const config: Config = {
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
-  channelSecret: process.env.CHANNEL_SECRET,
+  channelSecret: process.env.CHANNEL_SECRET || '',
 };
 
 export default config;

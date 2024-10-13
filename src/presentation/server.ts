@@ -5,7 +5,7 @@ import config from '../infrastructure/config';
 
 const app = express();
 
-app.post('/webhook', line.middleware(config), (req, res) => {
+app.post('/webhook', line.middleware(config), (req: express.Request, res: express.Response) => {
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
