@@ -1,9 +1,9 @@
-import line from '@line/bot-sdk';
-import config from './config';
+import { Client, middleware } from "https://deno.land/x/linebot_sdk/mod.ts";
+import config from "./config.ts";
 
-const client = new line.Client({
-  channelAccessToken: config.channelAccessToken || '',
-  channelSecret: config.channelSecret || '',
+const client = new Client({
+  channelAccessToken: config.channelAccessToken,
+  channelSecret: config.channelSecret,
 });
 
-export { client };
+export { client, middleware };

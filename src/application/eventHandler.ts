@@ -1,15 +1,15 @@
-import { processMessage } from '../domain/messageProcessor';
-import { client } from '../infrastructure/lineClient';
-import { WebhookEvent, MessageAPIResponseBase } from '@line/bot-sdk';
+import { processMessage } from "../domain/messageProcessor.ts";
+import { client } from "../infrastructure/lineClient.ts";
+import { WebhookEvent, MessageAPIResponseBase } from "https://deno.land/x/linebot_sdk/mod.ts";
 
-function handleEvent(event: WebhookEvent): Promise<MessageAPIResponseBase | null> {
-  if (event.type !== 'message' || event.message.type !== 'text') {
+async function handleEvent(event: WebhookEvent): Promise<MessageAPIResponseBase | null> {
+  if (event.type !== "message" || event.message.type !== "text") {
     return Promise.resolve(null);
   }
 
-  const echo: line.TextMessage = processMessage(event.message.text);
+  const echo = processMessage(event.message.text);
 
-  return client.replyMessage(event.replyToken, echo);
+  return await client.replyMessage(event.replyToken, echo);
 }
 
 export { handleEvent };

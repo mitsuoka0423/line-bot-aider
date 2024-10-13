@@ -1,22 +1,27 @@
-import express from 'express';
-import line from '@line/bot-sdk';
-import { handleEvent } from '../application/eventHandler';
-import config from '../infrastructure/config';
+import { Application, Router } from "https://deno.land/x/oak/mod.ts";
+import { handleEvent } from "../application/eventHandler.ts";
+import config from "../infrastructure/config.ts";
+import { middleware } from "../infrastructure/lineClient.ts";
 
-const app = express();
+const app = new Application();
+const router = new Router();
 
-app.post('/webhook', line.middleware(config), (req: express.Request, res: express.Response) => {
-  Promise
-    .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
-    .catch((err) => {
-      console.error(err);
-      res.status(500).end();
-    });
+router.post("/webhook", async (context) => {
+  try {
+    const body = await context.request.body().value;
+    const results = await Promise.all(body.events.map(handleEvent));
+    context.response.body = results;
+  } catch (err) {
+    console.error(err);
+    context.response.status = 500;
+  }
 });
 
-const PORT = process.env.PORT || 3000;
+app.use(middleware(config));
+app.use(router.routes());
+app.use(router.allowedMethods());
 
-app.listen(PORT, () => {
-  console.log(`LINE Bot is running on port ${PORT}`);
-});
+const PORT = Deno.env.get("PORT") || 3000;
+
+console.log(`LINE Bot is running on port ${PORT}`);
+await app.listen({ port: +PORT });
