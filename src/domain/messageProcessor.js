@@ -1,5 +1,5 @@
-function processMessage(text) {
+function processMessage(text: string): { type: string; text: string } {
   return { type: 'text', text: text };
 }
 
-module.exports = { processMessage };
+export { processMessage };

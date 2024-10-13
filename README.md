@@ -26,7 +26,13 @@
 
    `YOUR_CHANNEL_ACCESS_TOKEN`と`YOUR_CHANNEL_SECRET`をLINE Developers Consoleから取得した実際の認証情報に置き換えてください。
 
-4. サーバーを起動します。
+4. TypeScriptをコンパイルします。
+
+   ```bash
+   npx tsc
+   ```
+
+5. サーバーを起動します。
 
    ```bash
    node line-bot.js

@@ -1,7 +1,7 @@
-const express = require('express');
-const line = require('@line/bot-sdk');
-const { handleEvent } = require('../application/eventHandler');
-const config = require('../infrastructure/config');
+import express from 'express';
+import line from '@line/bot-sdk';
+import { handleEvent } from '../application/eventHandler';
+import config from '../infrastructure/config';
 
 const app = express();
 

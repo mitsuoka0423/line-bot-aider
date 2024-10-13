@@ -1,6 +1,9 @@
-const line = require('@line/bot-sdk');
-const config = require('./config');
+import line from '@line/bot-sdk';
+import config from './config';
 
-const client = new line.Client(config);
+const client = new line.Client({
+  channelAccessToken: config.channelAccessToken || '',
+  channelSecret: config.channelSecret || '',
+});
 
-module.exports = { client };
+export { client };

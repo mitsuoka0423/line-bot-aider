@@ -1,7 +1,8 @@
-const { processMessage } = require('../domain/messageProcessor');
-const { client } = require('../infrastructure/lineClient');
+import { processMessage } from '../domain/messageProcessor';
+import { client } from '../infrastructure/lineClient';
+import { WebhookEvent, MessageAPIResponseBase } from '@line/bot-sdk';
 
-function handleEvent(event) {
+function handleEvent(event: WebhookEvent): Promise<MessageAPIResponseBase | null> {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
   }
@@ -11,4 +12,4 @@ function handleEvent(event) {
   return client.replyMessage(event.replyToken, echo);
 }
 
-module.exports = { handleEvent };
+export { handleEvent };

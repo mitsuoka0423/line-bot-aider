@@ -1,1 +1,1 @@
-require('./src/presentation/server');
+import './src/presentation/server';
