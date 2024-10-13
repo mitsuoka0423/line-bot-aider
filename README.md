@@ -35,7 +35,7 @@
 5. サーバーを起動します。
 
    ```bash
-   node dist/index.js
+   npm start
    ```
 
    サーバーはポート3000で起動します。
