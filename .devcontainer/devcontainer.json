@@ -13,7 +13,8 @@
 				"christian-kohler.path-intellisense",
 				"YoavBls.pretty-ts-errors",
 				"Gruntfuggly.todo-tree",
-				"yoshi389111.visible-whitespace"
+				"yoshi389111.visible-whitespace",
+				"bierner.markdown-mermaid"
 			]
 		}
 	},
