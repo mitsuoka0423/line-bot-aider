@@ -1,23 +1,17 @@
 # LINE Bot エコーサーバー
 
-このプロジェクトは、受信したテキストメッセージをそのまま返すシンプルなLINE Botです。Node.js、Express、およびLINE Messaging API SDKを使用して構築されています。
+このプロジェクトは、受信したテキストメッセージをそのまま返すシンプルなLINE Botです。DenoとLINE Messaging API SDKを使用して構築されています。
 
 ## 前提条件
 
-- お使いのマシンにNode.jsとnpmがインストールされていること。
+- お使いのマシンにDenoがインストールされていること。
 - LINE Developers Consoleでアカウントを作成し、チャンネルを設定していること。
 
 ## セットアップ
 
 1. リポジトリをクローンし、プロジェクトディレクトリに移動します。
 
-2. 必要な依存関係をインストールします。
-
-   ```bash
-   npm install
-   ```
-
-3. ルートディレクトリに`.env`ファイルを作成し、LINE Botの認証情報を追加します。
+2. ルートディレクトリに`.env`ファイルを作成し、LINE Botの認証情報を追加します。
 
    ```plaintext
    CHANNEL_ACCESS_TOKEN=YOUR_CHANNEL_ACCESS_TOKEN
@@ -26,19 +20,13 @@
 
    `YOUR_CHANNEL_ACCESS_TOKEN`と`YOUR_CHANNEL_SECRET`をLINE Developers Consoleから取得した実際の認証情報に置き換えてください。
 
-4. TypeScriptをコンパイルします。
+3. サーバーを起動します。
 
    ```bash
-   npx tsc
+   deno run --allow-net --allow-env src/index.ts
    ```
 
-5. サーバーを起動します。
-
-   ```bash
-   npm start
-   ```
-
-   サーバーはポート3000で起動します。
+   サーバーはポート3000で起動します。環境変数`PORT`を設定することでポートを変更できます。
 
 ## アーキテクチャ
 
