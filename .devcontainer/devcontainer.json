@@ -14,7 +14,8 @@
 				"YoavBls.pretty-ts-errors",
 				"Gruntfuggly.todo-tree",
 				"yoshi389111.visible-whitespace",
-				"bierner.markdown-mermaid"
+				"bierner.markdown-mermaid",
+				"denoland.vscode-deno"
 			]
 		}
 	},
